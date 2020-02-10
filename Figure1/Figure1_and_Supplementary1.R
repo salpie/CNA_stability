@@ -54,16 +54,11 @@ filterShortLossGain <- function(Cn) {
 ########################## Make Figures ####################
 ############################################################
 
-
-load("final_1Mb_dataframe_new.RData")
-
-all_samples_1mb$stop <- all_samples_1mb$stop - 500000
-all_samples_1mb$start <- all_samples_1mb$start - 500000
+filtered <- read.table(file="Fig1_CNRaw.txt", sep="\t", quote=F, row.names=F)
 
 #Chromosome separation positions
-chr.ends = cumsum(table(all_samples_1mb[,"chr"]))[1:22]
+chr.ends = cumsum(table(filtered[,"chr"]))[1:22]
 
-filtered <- read.table(file="Fig1_CNRaw.txt", sep="\t", quote=F, row.names=F)
 #remove chromosomes
 filtered$chr <- NULL
 filtered$start <- NULL
